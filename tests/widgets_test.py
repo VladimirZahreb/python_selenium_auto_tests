@@ -1,6 +1,6 @@
 import time
 
-from pages.widgets_page import AccordianPage
+from pages.widgets_page import AccordianPage, AutoCompletePage
 
 class TestWidgets:
     class TestAccordianPage:
@@ -21,28 +21,39 @@ class TestWidgets:
             assert second_title == 'Where does it come from?' and second_content > 0, 'Incorrect title or missing text'
             assert third_title == 'Why do we use it?' and third_content > 0, 'Incorrect title or missing text'
 
-    # class TestAutoCompletePage:
-    #     def test_fill_multi_autocomplete(self, driver):
-    #         autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
-    #         autocomplete_page.open()
-    #         colors = autocomplete_page.fill_input_multi()
-    #         colors_result = autocomplete_page.check_color_in_multi()
-    #         assert colors == colors_result, 'the added colors are missing in the input'
-    #
-    #     def test_remove_value_from_multi(self, driver):
-    #         autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
-    #         autocomplete_page.open()
-    #         autocomplete_page.fill_input_multi()
-    #         count_value_before, count_value_after = autocomplete_page.remove_value_from_multi()
-    #         assert count_value_before != count_value_after, "value was not deleted"
-    #
-    #     def test_fill_single_autocomplete(self, driver):
-    #         autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
-    #         autocomplete_page.open()
-    #         color = autocomplete_page.fill_input_single()
-    #         color_result = autocomplete_page.check_color_in_single()
-    #         assert color == color_result, 'the added colors are missing in the input'
-    #
+    class TestAutoCompletePage:
+        def test_fill_multi_autocomplete(self, driver):
+            autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
+            autocomplete_page.open()
+            autocomplete_page.fill_input_multi()
+            time.sleep(3)
+            colors = autocomplete_page.fill_input_multi()
+            colors_result = autocomplete_page.check_color_in_multi()
+            print(colors)
+            print(colors_result)
+            assert colors == colors_result, 'the added colors are missing in the input'
+
+        def test_remove_value_from_multi(self, driver):
+            autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
+            autocomplete_page.open()
+            autocomplete_page.fill_input_multi()
+            # time.sleep(5)
+            autocomplete_page.remove_value_from_multi()
+            # time.sleep(5)
+            count_value_before, count_value_after = autocomplete_page.remove_value_from_multi()
+            # print(count_value_before)
+            # print(count_value_after)
+            assert count_value_before != count_value_after, "value was not deleted"
+
+        def test_fill_single_autocomplete(self, driver):
+            autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
+            autocomplete_page.open()
+            color = autocomplete_page.fill_input_single()
+            color_result = autocomplete_page.check_color_in_single()
+            # print(color)
+            # print(color_result)
+            assert color == color_result, 'the added colors are missing in the input'
+
     # class TestDatePickerPage:
     #
     #     def test_change_date(self, driver):
