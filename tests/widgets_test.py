@@ -2,7 +2,12 @@ import time
 
 from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage, ToolTipsPage, MenuPage
 
+"""Testing different widgets on the site page"""
+
 class TestWidgets:
+
+    """Testing widget "Accordian on the site page"""
+
     class TestAccordianPage:
         def test_accordian(self, driver):
             accordian_page = AccordianPage(driver, 'https://demoqa.com/accordian')
@@ -22,6 +27,9 @@ class TestWidgets:
             assert third_title == 'Why do we use it?' and third_content > 0, 'Incorrect title or missing text'
 
     class TestAutoCompletePage:
+
+        """Testing widget "Auto Complete" on the site page"""
+
         def test_fill_multi_autocomplete(self, driver):
             autocomplete_page = AutoCompletePage(driver, 'https://demoqa.com/auto-complete')
             autocomplete_page.open()
@@ -56,6 +64,8 @@ class TestWidgets:
 
     class TestDatePickerPage:
 
+        """Testing widget "Date Picker" on the site page"""
+
         def test_change_date(self, driver):
             date_picker_page = DatePickerPage(driver, 'https://demoqa.com/date-picker')
             date_picker_page.open()
@@ -73,6 +83,9 @@ class TestWidgets:
             assert value_date_before != value_date_after, 'the date and time have not been changed'
 
     class TestSliderPage:
+
+        """Testing widget "Slider" on the site page"""
+
         def test_slider(self, driver):
             slider = SliderPage(driver, 'https://demoqa.com/slider')
             slider.open()
@@ -80,6 +93,9 @@ class TestWidgets:
             assert before != after, 'the slider value has not been changed'
 
     class TestProgressBarPage:
+
+        """Testing widget "Progress Bar" on the site page"""
+
         def test_progress_bar(self, driver):
             progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
             progress_bar.open()
@@ -87,6 +103,9 @@ class TestWidgets:
             assert before != after, 'the progress bar value has not been changed'
 
     class TestTabsPage:
+
+        """Testing widget "Tabs" on the site page"""
+
         def test_tabs(self, driver):
             tabs = TabsPage(driver, 'https://demoqa.com/tabs')
             tabs.open()
@@ -100,6 +119,9 @@ class TestWidgets:
             assert more_button == 'More' and what_content != 0, 'the tab "more" was not pressed or the text is missing'
 
     class TestToolTips:
+
+        """Testing widget "Tool Tips" on the site page"""
+
         def test_tool_tips(self, driver):
             tool_tips_page = ToolTipsPage(driver, 'https://demoqa.com/tool-tips')
             tool_tips_page.open()
@@ -110,6 +132,9 @@ class TestWidgets:
             assert section_text == 'You hovered over the 1.10.32', 'hover missing or incorrect content'
 
     class TestMenuPage:
+
+        """Testing widget ""Menu" on the site page"""
+
         def test_menu_items(self, driver):
             menu_page = MenuPage(driver, 'https://demoqa.com/menu')
             menu_page.open()

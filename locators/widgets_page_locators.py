@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+"""Locators for the site widgets"""
 
 class AccordianPageLocators:
     SECTION_FIRST = (By.CSS_SELECTOR, 'div[id="section1Heading"]')
