@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>alerts_frame_windows_test.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+alerts_frame_windows_test.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">time</span>
+<span class="s0">from </span><span class="s1">pages.alerts_frame_windows_page </span><span class="s0">import </span><span class="s1">BrowserWindowsPage</span><span class="s0">, </span><span class="s1">AlertsPage</span><span class="s0">, </span><span class="s1">FramesPage</span><span class="s0">, </span><span class="s1">NestedFramesPage</span><span class="s0">, </span><span class="s1">ModalDialogsPage</span>
+<span class="s0">class </span><span class="s1">TestAlertsFrameWindow:</span>
+   <span class="s0">class </span><span class="s1">TestBrowserWindows:</span>
+        <span class="s0">def </span><span class="s1">test_new_tab(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">browser_windows_page = BrowserWindowsPage(driver</span><span class="s0">, </span><span class="s2">&quot;https://demoqa.com/browser-windows&quot;</span><span class="s1">)</span>
+            <span class="s1">browser_windows_page.open()</span>
+            <span class="s1">text_result = browser_windows_page.check_opened_new_tab()</span>
+            <span class="s0">assert </span><span class="s1">text_result == </span><span class="s2">'This is a sample page'</span><span class="s0">, </span><span class="s2">&quot;the new tab has not opened or an incorrect tab has opened&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_new_window(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">browser_windows_page = BrowserWindowsPage(driver</span><span class="s0">, </span><span class="s2">&quot;https://demoqa.com/browser-windows&quot;</span><span class="s1">)</span>
+            <span class="s1">browser_windows_page.open()</span>
+            <span class="s1">text_result = browser_windows_page.check_opened_new_tab()</span>
+            <span class="s0">assert </span><span class="s1">text_result == </span><span class="s2">'This is a sample page'</span><span class="s0">, </span><span class="s2">&quot;the new window has not opened or an incorrect window has opened&quot;</span>
+
+   <span class="s0">class </span><span class="s1">TestAlertsPage:</span>
+        <span class="s0">def </span><span class="s1">test_see_alert(self</span><span class="s0">, </span><span class="s1">driver):</span>
+           <span class="s1">alert_page = AlertsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/alerts'</span><span class="s1">)</span>
+           <span class="s1">alert_page.open()</span>
+           <span class="s1">alert_text = alert_page.check_see_alert()</span>
+           <span class="s0">assert </span><span class="s1">alert_text == </span><span class="s2">'You clicked a button'</span><span class="s0">, </span><span class="s2">&quot;Alert did not show up&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_alert_appear_5_sec(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">alert_page = AlertsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/alerts'</span><span class="s1">)</span>
+            <span class="s1">alert_page.open()</span>
+            <span class="s1">alert_text = alert_page.check_alert_appear_5_sec()</span>
+            <span class="s0">assert </span><span class="s1">alert_text == </span><span class="s2">'This alert appeared after 5 seconds'</span><span class="s0">, </span><span class="s2">&quot;Alert did not show up&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_confirm_alert(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">alert_page = AlertsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/alerts'</span><span class="s1">)</span>
+            <span class="s1">alert_page.open()</span>
+            <span class="s1">alert_text = alert_page.check_confirm_alert()</span>
+            <span class="s0">assert </span><span class="s1">alert_text == </span><span class="s2">'You selected Ok'</span><span class="s0">, </span><span class="s2">&quot;Alert did not show up&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_prompt_alert(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">alert_page = AlertsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/alerts'</span><span class="s1">)</span>
+            <span class="s1">alert_page.open()</span>
+            <span class="s1">text</span><span class="s0">, </span><span class="s1">alert_text = alert_page.check_prompt_alert()</span>
+            <span class="s0">assert </span><span class="s1">text </span><span class="s0">in </span><span class="s1">alert_text</span><span class="s0">, </span><span class="s2">&quot;Alert did not show up&quot;</span>
+
+   <span class="s0">class </span><span class="s1">TestFramesPage:</span>
+       <span class="s0">def </span><span class="s1">test_frames(self</span><span class="s0">, </span><span class="s1">driver):</span>
+           <span class="s1">frame_page = FramesPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/frames'</span><span class="s1">)</span>
+           <span class="s1">frame_page.open()</span>
+           <span class="s1">result_frame1 = frame_page.check_frame(</span><span class="s2">'frame1'</span><span class="s1">)</span>
+           <span class="s1">result_frame2 = frame_page.check_frame(</span><span class="s2">'frame2'</span><span class="s1">)</span>
+           <span class="s1">print(result_frame1)</span>
+           <span class="s1">print(result_frame2)</span>
+           <span class="s0">assert </span><span class="s1">result_frame1 == [</span><span class="s2">'This is a sample page'</span><span class="s0">, </span><span class="s2">'500px'</span><span class="s0">, </span><span class="s2">'350px'</span><span class="s1">]</span><span class="s0">, </span><span class="s2">'The frame does not exist'</span>
+           <span class="s0">assert </span><span class="s1">result_frame2 == [</span><span class="s2">'This is a sample page'</span><span class="s0">, </span><span class="s2">'100px'</span><span class="s0">, </span><span class="s2">'100px'</span><span class="s1">]</span><span class="s0">, </span><span class="s2">'The frame does not exist'</span>
+
+   <span class="s0">class </span><span class="s1">TestNestedFramesPage:</span>
+       <span class="s0">def </span><span class="s1">test_nested_frames(self</span><span class="s0">, </span><span class="s1">driver):</span>
+           <span class="s1">nested_frame_page = NestedFramesPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/nestedframes'</span><span class="s1">)</span>
+           <span class="s1">nested_frame_page.open()</span>
+           <span class="s1">parent_text</span><span class="s0">, </span><span class="s1">child_text = nested_frame_page.check_nested_frame()</span>
+           <span class="s3"># print(parent_text)</span>
+           <span class="s3"># print(child_text)</span>
+           <span class="s0">assert </span><span class="s1">parent_text == </span><span class="s2">'Parent frame'</span><span class="s0">, </span><span class="s2">'Nested frame does not exist'</span>
+           <span class="s0">assert </span><span class="s1">child_text == </span><span class="s2">'Child Iframe'</span><span class="s0">, </span><span class="s2">'Nested frame does not exist'</span>
+
+   <span class="s0">class </span><span class="s1">TestModalDialogsPage:</span>
+       <span class="s0">def </span><span class="s1">test_modal_dialogs(self</span><span class="s0">, </span><span class="s1">driver):</span>
+           <span class="s1">modal_dialogs_page = ModalDialogsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/modal-dialogs'</span><span class="s1">)</span>
+           <span class="s1">modal_dialogs_page.open()</span>
+           <span class="s1">small</span><span class="s0">, </span><span class="s1">large = modal_dialogs_page.check_modal_dialogs()</span>
+           <span class="s1">print(small)</span>
+           <span class="s1">print(large)</span>
+           <span class="s0">assert </span><span class="s1">small[</span><span class="s4">1</span><span class="s1">] &lt; large[</span><span class="s4">1</span><span class="s1">]</span><span class="s0">, </span><span class="s2">'text from large dialog is less than text from small dialog'</span>
+           <span class="s0">assert </span><span class="s1">small[</span><span class="s4">0</span><span class="s1">] == </span><span class="s2">'Small Modal'</span><span class="s0">, </span><span class="s2">'The header is not &quot;Small modal&quot;'</span>
+           <span class="s0">assert </span><span class="s1">large[</span><span class="s4">0</span><span class="s1">] == </span><span class="s2">'Large Modal'</span><span class="s0">, </span><span class="s2">'The header is not &quot;Large modal&quot;'</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>interactions_page_locators.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+interactions_page_locators.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">selenium.webdriver.common.by </span><span class="s0">import </span><span class="s1">By</span>
+
+
+<span class="s0">class </span><span class="s1">SortablePageLocators:</span>
+    <span class="s1">TAB_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-list&quot;]'</span><span class="s1">)</span>
+    <span class="s1">LIST_ITEM = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-list&quot;] div[class=&quot;list-group-item list-group-item-action&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TAB_GRID = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-grid&quot;]'</span><span class="s1">)</span>
+    <span class="s1">GRID_ITEM = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-grid&quot;] div[class=&quot;list-group-item list-group-item-action&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">SelectablePageLocators:</span>
+    <span class="s1">TAB_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='demo-tab-list']&quot;</span><span class="s1">)</span>
+    <span class="s1">LIST_ITEM = (</span>
+        <span class="s1">By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;ul[id='verticalListContainer'] li[class='mt-2 list-group-item list-group-item-action']&quot;</span><span class="s1">)</span>
+    <span class="s1">LIST_ITEM_ACTIVE = (</span>
+        <span class="s1">By.CSS_SELECTOR</span><span class="s0">,</span>
+        <span class="s2">'ul[id=&quot;verticalListContainer&quot;] li[class=&quot;mt-2 list-group-item active list-group-item-action&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TAB_GRID = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='demo-tab-grid']&quot;</span><span class="s1">)</span>
+    <span class="s1">GRID_ITEM = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;gridContainer&quot;]  li[class=&quot;list-group-item list-group-item-action&quot;]'</span><span class="s1">)</span>
+    <span class="s1">GRID_ITEM_ACTIVE = (</span>
+        <span class="s1">By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;gridContainer&quot;]  li[class=&quot;list-group-item active list-group-item-action&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">ResizablePageLocators:</span>
+    <span class="s1">RESIZABLE_BOX_HANDLE = (</span>
+        <span class="s1">By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;constraint-area&quot;] span[class=&quot;react-resizable-handle react-resizable-handle-se&quot;]'</span><span class="s1">)</span>
+    <span class="s1">RESIZABLE_BOX = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;resizableBoxWithRestriction&quot;]'</span><span class="s1">)</span>
+    <span class="s1">RESIZABLE_HANDLE = (</span>
+        <span class="s1">By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;resizable&quot;] span[class=&quot;react-resizable-handle react-resizable-handle-se&quot;]'</span><span class="s1">)</span>
+    <span class="s1">RESIZABLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;resizable&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">DroppablePageLocators:</span>
+    <span class="s3"># Simple</span>
+    <span class="s1">SIMPLE_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='droppableExample-tab-simple']&quot;</span><span class="s1">)</span>
+    <span class="s1">DRAG_ME_SIMPLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;draggable&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DROP_HERE_SIMPLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#simpleDropContainer #droppable'</span><span class="s1">)</span>
+
+    <span class="s3"># Accept</span>
+    <span class="s1">ACCEPT_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='droppableExample-tab-accept']&quot;</span><span class="s1">)</span>
+    <span class="s1">ACCEPTABLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;acceptable&quot;]'</span><span class="s1">)</span>
+    <span class="s1">NOT_ACCEPTABLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;notAcceptable&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DROP_HERE_ACCEPT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#acceptDropContainer #droppable'</span><span class="s1">)</span>
+
+    <span class="s3"># Prevent Propogation</span>
+    <span class="s1">PREVENT_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='droppableExample-tab-preventPropogation']&quot;</span><span class="s1">)</span>
+    <span class="s1">NOT_GREEDY_DROP_BOX_TEXT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;notGreedyDropBox&quot;] p:nth-child(1)'</span><span class="s1">)</span>
+    <span class="s1">NOT_GREEDY_INNER_BOX = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;notGreedyInnerDropBox&quot;]'</span><span class="s1">)</span>
+    <span class="s1">GREEDY_DROP_BOX_TEXT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;greedyDropBox&quot;] p:nth-child(1)'</span><span class="s1">)</span>
+    <span class="s1">GREEDY_INNER_BOX = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;greedyDropBoxInner&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DRAG_ME_PREVENT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#ppDropContainer #dragBox'</span><span class="s1">)</span>
+
+    <span class="s3"># Revert Draggable</span>
+    <span class="s1">REVERT_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;a[id='droppableExample-tab-revertable']&quot;</span><span class="s1">)</span>
+    <span class="s1">WILL_REVERT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;revertable&quot;]'</span><span class="s1">)</span>
+    <span class="s1">NOT_REVERT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;notRevertable&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DROP_HERE_REVERT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#revertableDropContainer #droppable'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">DraggablePageLocators:</span>
+    <span class="s3"># Simple</span>
+    <span class="s1">SIMPLE_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;draggableExample-tab-simple&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DRAG_ME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;draggableExample-tabpane-simple&quot;] div[id=&quot;dragBox&quot;]'</span><span class="s1">)</span>
+    <span class="s3"># Axis Restricted</span>
+    <span class="s1">AXIS_TAB = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;draggableExample-tab-axisRestriction&quot;]'</span><span class="s1">)</span>
+    <span class="s1">ONLY_X = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;restrictedX&quot;]'</span><span class="s1">)</span>
+    <span class="s1">ONLY_Y = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;restrictedY&quot;]'</span><span class="s1">)</span></pre>
+</body>
+</html>

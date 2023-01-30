@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>elements_page_locators.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #629755; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+elements_page_locators.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">selenium.webdriver.common.by </span><span class="s0">import </span><span class="s1">By</span>
+
+<span class="s2"># &quot;&quot;&quot;Test elements&quot;&quot;&quot;</span>
+<span class="s0">class </span><span class="s1">TextBoxPageLocators:</span>
+    <span class="s2"># form fields</span>
+    <span class="s1">FULL_NAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;input[id='userName']&quot;</span><span class="s1">)</span>
+    <span class="s1">EMAIL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;userEmail&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CURRENT_ADDRESS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'textarea[id=&quot;currentAddress&quot;]'</span><span class="s1">)</span>
+    <span class="s1">PERMANENT_ADDRESS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'textarea[id=&quot;permanentAddress&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SUBMIT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;submit&quot;]'</span><span class="s1">)</span>
+
+    <span class="s2"># created from</span>
+    <span class="s1">CREATED_FULL_NAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'#output #name'</span><span class="s1">)</span>
+    <span class="s1">CREATED_EMAIL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'#output #email'</span><span class="s1">)</span>
+    <span class="s1">CREATED_CURRENT_ADDRESS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'#output #currentAddress'</span><span class="s1">)</span>
+    <span class="s1">CREATED_PERMANENT_ADDRESS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'#output #permanentAddress'</span><span class="s1">)</span>
+
+
+<span class="s2"># &quot;&quot;&quot;Test checkbox&quot;&quot;&quot;</span>
+<span class="s2"># class CheckBoxPageLocators:</span>
+<span class="s2">#     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, &quot;button[title='Expand all']&quot;)</span>
+<span class="s2">#     ITEM_LIST = (By.CSS_SELECTOR, &quot;span[class='rct-title']&quot;)</span>
+<span class="s2">#     CHECKED_ITEMS = (By.CSS_SELECTOR, &quot;svg[class ='rct-icon rct-icon-check']&quot;)</span>
+<span class="s2">#     TITLE_ITEM = (&quot;.//ancestor::span[@class='rct-text']&quot;)</span>
+<span class="s2">#     OUTPUT_RESULT = (By.CSS_SELECTOR, &quot;span[class ='text-success']&quot;)</span>
+<span class="s0">class </span><span class="s1">CheckBoxPageLocators:</span>
+    <span class="s1">EXPAND_ALL_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;button[title='Expand all']&quot;</span><span class="s1">)</span>
+    <span class="s1">ITEM_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;span[class='rct-title']&quot;</span><span class="s1">)</span>
+    <span class="s1">CHECKED_ITEMS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;svg[class='rct-icon rct-icon-check']&quot;</span><span class="s1">)</span>
+    <span class="s1">TITLE_ITEM = </span><span class="s3">&quot;.//ancestor::span[@class='rct-text']&quot;</span>
+    <span class="s2"># TITLE_ITEM = &quot;span[class='rct-text']&quot;</span>
+    <span class="s1">OUTPUT_RESULT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;span[class='text-success']&quot;</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">RadioButtonPageLocators:</span>
+    <span class="s1">YES_RADIOBUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'label[class^=&quot;custom-control&quot;][for=&quot;yesRadio&quot;]'</span><span class="s1">)</span>
+    <span class="s1">IMPRESSIVE_RADIOBUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'label[class^=&quot;custom-control&quot;][for=&quot;impressiveRadio&quot;]'</span><span class="s1">)</span>
+    <span class="s1">NO_RADIOBUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'label[class^=&quot;custom-control&quot;][for=&quot;noRadio&quot;]'</span><span class="s1">)</span>
+    <span class="s1">OUTPUT_RESULT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'p span[class=&quot;text-success&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">WebTablePageLocators:</span>
+    <span class="s4">&quot;&quot;&quot;Add person form&quot;&quot;&quot;</span>
+    <span class="s1">ADD_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;addNewRecordButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">FIRSTNAME_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;firstName&quot;]'</span><span class="s1">)</span>
+    <span class="s1">LASTNAME_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;lastName&quot;]'</span><span class="s1">)</span>
+    <span class="s1">EMAIL_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;userEmail&quot;]'</span><span class="s1">)</span>
+    <span class="s1">AGE_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;age&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SALARY_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;salary&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DEPARTMENT_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;department&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SUBMIT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;submit&quot;]'</span><span class="s1">)</span>
+    <span class="s3">&quot;&quot;&quot;Table&quot;&quot;&quot;</span>
+    <span class="s2"># FULL_PEOPLE_LIST = (By.CSS_SELECTOR, &quot;div[class='rt-tbody']&quot;)</span>
+    <span class="s1">FULL_PEOPLE_LIST = (</span><span class="s3">&quot;xpath&quot;</span><span class="s0">, </span><span class="s3">&quot;.//ancestor::div[@class='rt-tr-group']&quot;</span><span class="s1">)</span>
+
+    <span class="s1">SEARCH_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;input[id='searchBox']&quot;</span><span class="s1">)</span>
+    <span class="s1">DELETE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;span[title='Delete']&quot;</span><span class="s1">)</span>
+    <span class="s1">ROW_PARENT = </span><span class="s3">&quot;.//ancestor::div[@class='rt-tr-group']&quot;</span>
+    <span class="s1">NO_ROWS_FOUND = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'div[class=&quot;rt-noData&quot;]'</span><span class="s1">)</span>
+    <span class="s1">COUNT_ROW_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'select[aria-label=&quot;rows per page&quot;]'</span><span class="s1">)</span>
+
+    <span class="s3">&quot;&quot;&quot;Update&quot;&quot;&quot;</span>
+    <span class="s1">UPDATE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;span[title='Edit']&quot;</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">ButtonsPageLocators:</span>
+    <span class="s1">DOUBLE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;button[id='doubleClickBtn']&quot;</span><span class="s1">)</span>
+    <span class="s1">RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;button[id='rightClickBtn']&quot;</span><span class="s1">)</span>
+    <span class="s1">CLICK_ME_BUTTON = (By.XPATH</span><span class="s0">, </span><span class="s3">&quot;//div[3]/button&quot;</span><span class="s1">)</span>
+
+    <span class="s2"># result</span>
+    <span class="s1">SUCCESS_DOUBLE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'p[id=&quot;doubleClickMessage&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SUCCESS_RIGHT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'p[id=&quot;rightClickMessage&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SUCCESS_CLICK_ME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'p[id=&quot;dynamicClickMessage&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">LinksPageLocators:</span>
+    <span class="s1">SIMPLE_LINK = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;a[id='simpleLink']&quot;</span><span class="s1">)</span>
+    <span class="s1">BAD_REQUEST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">&quot;a[id='bad-request']&quot;</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">UploadAndDownloadPageLocators:</span>
+    <span class="s1">UPLOAD_FILE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'input[id=&quot;uploadFile&quot;]'</span><span class="s1">)</span>
+    <span class="s1">UPLOADED_RESULT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'p[id=&quot;uploadedFilePath&quot;]'</span><span class="s1">)</span>
+
+    <span class="s1">DOWNLOAD_FILE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'a[id=&quot;downloadButton&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">DynamicPropertiesPageLocators:</span>
+    <span class="s1">COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;colorChange&quot;]'</span><span class="s1">)</span>
+    <span class="s1">VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;visibleAfter&quot;]'</span><span class="s1">)</span>
+    <span class="s1">ENABLE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s3">'button[id=&quot;enableAfter&quot;]'</span><span class="s1">)</span></pre>
+</body>
+</html>

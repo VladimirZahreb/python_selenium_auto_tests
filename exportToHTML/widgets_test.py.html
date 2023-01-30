@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>widgets_test.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+widgets_test.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">time</span>
+
+<span class="s0">from </span><span class="s1">pages.widgets_page </span><span class="s0">import </span><span class="s1">AccordianPage</span><span class="s0">, </span><span class="s1">AutoCompletePage</span><span class="s0">, </span><span class="s1">DatePickerPage</span><span class="s0">, </span><span class="s1">SliderPage</span><span class="s0">, </span><span class="s1">ProgressBarPage</span><span class="s0">, </span><span class="s1">TabsPage</span><span class="s0">, </span><span class="s1">ToolTipsPage</span><span class="s0">, </span><span class="s1">MenuPage</span>
+
+<span class="s0">class </span><span class="s1">TestWidgets:</span>
+    <span class="s0">class </span><span class="s1">TestAccordianPage:</span>
+        <span class="s0">def </span><span class="s1">test_accordian(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">accordian_page = AccordianPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/accordian'</span><span class="s1">)</span>
+            <span class="s1">accordian_page.open()</span>
+            <span class="s3"># time.sleep(3)</span>
+            <span class="s1">first_title</span><span class="s0">, </span><span class="s1">first_content = accordian_page.check_accordian(</span><span class="s2">'first'</span><span class="s1">)</span>
+            <span class="s3"># time.sleep(3)</span>
+            <span class="s1">second_title</span><span class="s0">, </span><span class="s1">second_content = accordian_page.check_accordian(</span><span class="s2">'second'</span><span class="s1">)</span>
+            <span class="s3"># time.sleep(3)</span>
+            <span class="s1">third_title</span><span class="s0">, </span><span class="s1">third_content = accordian_page.check_accordian(</span><span class="s2">'third'</span><span class="s1">)</span>
+            <span class="s3"># time.sleep(3)</span>
+            <span class="s3"># print(first_title, first_content)</span>
+            <span class="s3"># print(second_title, second_content)</span>
+            <span class="s3"># print(third_title, third_content)</span>
+            <span class="s0">assert </span><span class="s1">first_title == </span><span class="s2">'What is Lorem Ipsum?' </span><span class="s0">and </span><span class="s1">first_content &gt; </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'Incorrect title or missing text'</span>
+            <span class="s0">assert </span><span class="s1">second_title == </span><span class="s2">'Where does it come from?' </span><span class="s0">and </span><span class="s1">second_content &gt; </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'Incorrect title or missing text'</span>
+            <span class="s0">assert </span><span class="s1">third_title == </span><span class="s2">'Why do we use it?' </span><span class="s0">and </span><span class="s1">third_content &gt; </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'Incorrect title or missing text'</span>
+
+    <span class="s0">class </span><span class="s1">TestAutoCompletePage:</span>
+        <span class="s0">def </span><span class="s1">test_fill_multi_autocomplete(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">autocomplete_page = AutoCompletePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/auto-complete'</span><span class="s1">)</span>
+            <span class="s1">autocomplete_page.open()</span>
+            <span class="s1">autocomplete_page.fill_input_multi()</span>
+            <span class="s1">time.sleep(</span><span class="s4">3</span><span class="s1">)</span>
+            <span class="s1">colors = autocomplete_page.fill_input_multi()</span>
+            <span class="s1">colors_result = autocomplete_page.check_color_in_multi()</span>
+            <span class="s1">print(colors)</span>
+            <span class="s1">print(colors_result)</span>
+            <span class="s0">assert </span><span class="s1">colors == colors_result</span><span class="s0">, </span><span class="s2">'the added colors are missing in the input'</span>
+
+        <span class="s0">def </span><span class="s1">test_remove_value_from_multi(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">autocomplete_page = AutoCompletePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/auto-complete'</span><span class="s1">)</span>
+            <span class="s1">autocomplete_page.open()</span>
+            <span class="s1">autocomplete_page.fill_input_multi()</span>
+            <span class="s3"># time.sleep(5)</span>
+            <span class="s1">autocomplete_page.remove_value_from_multi()</span>
+            <span class="s3"># time.sleep(5)</span>
+            <span class="s1">count_value_before</span><span class="s0">, </span><span class="s1">count_value_after = autocomplete_page.remove_value_from_multi()</span>
+            <span class="s3"># print(count_value_before)</span>
+            <span class="s3"># print(count_value_after)</span>
+            <span class="s0">assert </span><span class="s1">count_value_before != count_value_after</span><span class="s0">, </span><span class="s2">&quot;value was not deleted&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_fill_single_autocomplete(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">autocomplete_page = AutoCompletePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/auto-complete'</span><span class="s1">)</span>
+            <span class="s1">autocomplete_page.open()</span>
+            <span class="s1">color = autocomplete_page.fill_input_single()</span>
+            <span class="s1">color_result = autocomplete_page.check_color_in_single()</span>
+            <span class="s3"># print(color)</span>
+            <span class="s3"># print(color_result)</span>
+            <span class="s0">assert </span><span class="s1">color == color_result</span><span class="s0">, </span><span class="s2">'the added colors are missing in the input'</span>
+
+    <span class="s0">class </span><span class="s1">TestDatePickerPage:</span>
+
+        <span class="s0">def </span><span class="s1">test_change_date(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">date_picker_page = DatePickerPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/date-picker'</span><span class="s1">)</span>
+            <span class="s1">date_picker_page.open()</span>
+            <span class="s1">value_date_before</span><span class="s0">, </span><span class="s1">value_date_after = date_picker_page.select_date()</span>
+            <span class="s0">assert </span><span class="s1">value_date_before != value_date_after</span><span class="s0">, </span><span class="s2">'the date has not been changed'</span>
+
+        <span class="s0">def </span><span class="s1">test_change_date_and_time(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">date_picker_page = DatePickerPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/date-picker'</span><span class="s1">)</span>
+            <span class="s1">date_picker_page.open()</span>
+            <span class="s1">date = date_picker_page.select_date()</span>
+            <span class="s3"># print(date)</span>
+            <span class="s1">value_date_before</span><span class="s0">, </span><span class="s1">value_date_after = date_picker_page.select_date()</span>
+            <span class="s1">print(value_date_before)</span>
+            <span class="s1">print(value_date_after)</span>
+            <span class="s0">assert </span><span class="s1">value_date_before != value_date_after</span><span class="s0">, </span><span class="s2">'the date and time have not been changed'</span>
+
+    <span class="s0">class </span><span class="s1">TestSliderPage:</span>
+        <span class="s0">def </span><span class="s1">test_slider(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">slider = SliderPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/slider'</span><span class="s1">)</span>
+            <span class="s1">slider.open()</span>
+            <span class="s1">before</span><span class="s0">, </span><span class="s1">after = slider.change_slider_value()</span>
+            <span class="s0">assert </span><span class="s1">before != after</span><span class="s0">, </span><span class="s2">'the slider value has not been changed'</span>
+
+    <span class="s0">class </span><span class="s1">TestProgressBarPage:</span>
+        <span class="s0">def </span><span class="s1">test_progress_bar(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">progress_bar = ProgressBarPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/progress-bar'</span><span class="s1">)</span>
+            <span class="s1">progress_bar.open()</span>
+            <span class="s1">before</span><span class="s0">, </span><span class="s1">after = progress_bar.change_progress_bar_value()</span>
+            <span class="s0">assert </span><span class="s1">before != after</span><span class="s0">, </span><span class="s2">'the progress bar value has not been changed'</span>
+
+    <span class="s0">class </span><span class="s1">TestTabsPage:</span>
+        <span class="s0">def </span><span class="s1">test_tabs(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">tabs = TabsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/tabs'</span><span class="s1">)</span>
+            <span class="s1">tabs.open()</span>
+            <span class="s1">what_button</span><span class="s0">, </span><span class="s1">what_content = tabs.check_tabs(</span><span class="s2">'what'</span><span class="s1">)</span>
+            <span class="s1">origin_button</span><span class="s0">, </span><span class="s1">origin_content = tabs.check_tabs(</span><span class="s2">'origin'</span><span class="s1">)</span>
+            <span class="s1">use_button</span><span class="s0">, </span><span class="s1">use_content = tabs.check_tabs(</span><span class="s2">'use'</span><span class="s1">)</span>
+            <span class="s1">more_button</span><span class="s0">, </span><span class="s1">more_content = tabs.check_tabs(</span><span class="s2">'more'</span><span class="s1">)</span>
+            <span class="s0">assert </span><span class="s1">what_button == </span><span class="s2">'What' </span><span class="s0">and </span><span class="s1">what_content != </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'the tab &quot;what&quot; was not pressed or the text is missing'</span>
+            <span class="s0">assert </span><span class="s1">origin_button == </span><span class="s2">'Origin' </span><span class="s0">and </span><span class="s1">origin_content != </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'the tab &quot;origin&quot; was not pressed or the text is missing'</span>
+            <span class="s0">assert </span><span class="s1">use_button == </span><span class="s2">'Use' </span><span class="s0">and </span><span class="s1">use_content != </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'the tab &quot;use&quot; was not pressed or the text is missing'</span>
+            <span class="s0">assert </span><span class="s1">more_button == </span><span class="s2">'More' </span><span class="s0">and </span><span class="s1">what_content != </span><span class="s4">0</span><span class="s0">, </span><span class="s2">'the tab &quot;more&quot; was not pressed or the text is missing'</span>
+
+    <span class="s0">class </span><span class="s1">TestToolTips:</span>
+        <span class="s0">def </span><span class="s1">test_tool_tips(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">tool_tips_page = ToolTipsPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/tool-tips'</span><span class="s1">)</span>
+            <span class="s1">tool_tips_page.open()</span>
+            <span class="s1">button_text</span><span class="s0">, </span><span class="s1">field_text</span><span class="s0">, </span><span class="s1">contrary_text</span><span class="s0">, </span><span class="s1">section_text = tool_tips_page.check_tool_tips()</span>
+            <span class="s0">assert </span><span class="s1">button_text == </span><span class="s2">'You hovered over the Button'</span><span class="s0">, </span><span class="s2">'hover missing or incorrect content'</span>
+            <span class="s0">assert </span><span class="s1">field_text == </span><span class="s2">'You hovered over the text field'</span><span class="s0">, </span><span class="s2">'hover missing or incorrect content'</span>
+            <span class="s0">assert </span><span class="s1">contrary_text == </span><span class="s2">'You hovered over the Contrary'</span><span class="s0">, </span><span class="s2">'hover missing or incorrect content'</span>
+            <span class="s0">assert </span><span class="s1">section_text == </span><span class="s2">'You hovered over the 1.10.32'</span><span class="s0">, </span><span class="s2">'hover missing or incorrect content'</span>
+
+    <span class="s0">class </span><span class="s1">TestMenuPage:</span>
+        <span class="s0">def </span><span class="s1">test_menu_items(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">menu_page = MenuPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/menu'</span><span class="s1">)</span>
+            <span class="s1">menu_page.open()</span>
+            <span class="s1">data = menu_page.check_menu()</span>
+            <span class="s0">assert </span><span class="s1">data == [</span><span class="s2">'Main Item 1'</span><span class="s0">, </span><span class="s2">'Main Item 2'</span><span class="s0">, </span><span class="s2">'Sub Item'</span><span class="s0">, </span><span class="s2">'Sub Item'</span><span class="s0">, </span><span class="s2">'SUB SUB LIST »'</span><span class="s0">, </span><span class="s2">'Sub Sub Item 1'</span><span class="s0">,</span>
+                            <span class="s2">'Sub Sub Item 2'</span><span class="s0">, </span><span class="s2">'Main Item 3'</span><span class="s1">]</span><span class="s0">, </span><span class="s2">&quot;menu items do not exist or have not been selected&quot;</span>
+</pre>
+</body>
+</html>

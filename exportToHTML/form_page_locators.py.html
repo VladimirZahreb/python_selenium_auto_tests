@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>form_page_locators.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+form_page_locators.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+
+<span class="s0">from </span><span class="s1">selenium.webdriver.common.by </span><span class="s0">import </span><span class="s1">By</span>
+
+
+<span class="s0">class </span><span class="s1">FormPageLocators:</span>
+    <span class="s1">FIRST_NAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#firstName'</span><span class="s1">)</span>
+    <span class="s1">LAST_NAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#lastName'</span><span class="s1">)</span>
+    <span class="s1">EMAIL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#userEmail'</span><span class="s1">)</span>
+    <span class="s1">GENDER = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">f&quot;div[class*='custom-control'] label[for='gender-radio-</span><span class="s0">{</span><span class="s1">random.randint(</span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s1">)</span><span class="s0">}</span><span class="s2">']&quot;</span><span class="s1">)</span>
+    <span class="s1">MOBILE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;input[id='userNumber']&quot;</span><span class="s1">)</span>
+    <span class="s1">DATE_OF_BIRTH = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'id=&quot;dateOfBirthInput&quot;'</span><span class="s1">)</span>
+    <span class="s1">SUBJECT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;subjectsInput&quot;]'</span><span class="s1">)</span>
+    <span class="s1">HOBBIES = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">f'div[class*=&quot;custom-control&quot;] label[for=&quot;hobbies-checkbox-</span><span class="s0">{</span><span class="s1">random.randint(</span><span class="s3">1</span><span class="s0">, </span><span class="s3">3</span><span class="s1">)</span><span class="s0">}</span><span class="s2">&quot;]'</span><span class="s1">)</span>
+    <span class="s1">FILE_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">&quot;input[id='uploadPicture']&quot;</span><span class="s1">)</span>
+    <span class="s1">CURRENT_ADDRESS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#currentAddress'</span><span class="s1">)</span>
+    <span class="s1">SELECT_STATE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;state&quot;]'</span><span class="s1">)</span>
+    <span class="s1">STATE_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;react-select-3-input&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SELECT_CITY = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;city&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CITY_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;react-select-4-input&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SUBMIT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'#submit'</span><span class="s1">)</span>
+
+    <span class="s4"># table result</span>
+
+    <span class="s1">RESULT_TABLE = (By.XPATH</span><span class="s0">, </span><span class="s2">'//div[@class=&quot;table-responsive&quot;]//td[2]'</span><span class="s1">)</span></pre>
+</body>
+</html>

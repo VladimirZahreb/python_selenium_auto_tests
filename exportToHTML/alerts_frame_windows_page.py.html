@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>alerts_frame_windows_page.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+alerts_frame_windows_page.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">import </span><span class="s1">time</span>
+<span class="s0">from </span><span class="s1">selenium.common.exceptions </span><span class="s0">import </span><span class="s1">UnexpectedAlertPresentException</span>
+
+<span class="s0">from </span><span class="s1">locators.alerts_frame_windows_locators </span><span class="s0">import </span><span class="s1">BrowserWindowsPageLocators</span><span class="s0">, </span><span class="s1">AlertsPageLocators</span><span class="s0">, </span><span class="s1">FramesPageLocators</span><span class="s0">, </span><span class="s1">NestedFramesPageLocators</span><span class="s0">, </span><span class="s1">ModalDialogsPageLocators</span>
+<span class="s0">from </span><span class="s1">pages.base_page </span><span class="s0">import </span><span class="s1">BasePage</span>
+
+<span class="s0">class </span><span class="s1">BrowserWindowsPage(BasePage):</span>
+
+    <span class="s1">locators = BrowserWindowsPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">check_opened_new_tab(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.NEW_TAB_BUTTON).click()</span>
+        <span class="s1">self.driver.switch_to.window(self.driver.window_handles[</span><span class="s2">1</span><span class="s1">])</span>
+        <span class="s1">text_title = self.element_is_present(self.locators.TITLE_NEW).text</span>
+        <span class="s0">return </span><span class="s1">text_title</span>
+
+    <span class="s0">def </span><span class="s1">check_opened_new_window(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.NEW_WINDOW_BUTTON).click()</span>
+        <span class="s1">self.driver.switch_to.window(self.driver.window_handles[</span><span class="s2">1</span><span class="s1">])</span>
+        <span class="s1">text_title = self.element_is_present(self.locators.TITLE_NEW).text</span>
+        <span class="s0">return </span><span class="s1">text_title</span>
+
+    <span class="s3"># self.driver.switch_to.window(self.driver.window_handles[1])- to BasePage</span>
+    <span class="s3"># def click_on_the_radio_button(self, choice):</span>
+    <span class="s3">#     choices = {'yes': self.locators.YES_RADIOBUTTON,</span>
+    <span class="s3">#                'impressive': self.locators.IMPRESSIVE_RADIOBUTTON,</span>
+    <span class="s3">#                'no': self.locators.NO_RADIOBUTTON}</span>
+    <span class="s3">#     self.element_is_visible(choices[choice]).click()</span>
+
+    <span class="s3"># Do With If else</span>
+
+
+<span class="s0">class </span><span class="s1">AlertsPage(BasePage):</span>
+    <span class="s1">locators = AlertsPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">check_see_alert(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.SEE_ALERT_BUTTON).click()</span>
+        <span class="s1">alert_window = self.driver.switch_to.alert</span>
+        <span class="s3"># time.sleep(3)</span>
+        <span class="s0">return </span><span class="s1">alert_window.text</span>
+
+    <span class="s0">def </span><span class="s1">check_alert_appear_5_sec(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.APPEAR_ALERT_AFTER_5_SEC_BUTTON).click()</span>
+        <span class="s1">time.sleep(</span><span class="s2">6</span><span class="s1">)</span>
+        <span class="s3"># &quot;&quot;&quot;Do Count&quot;&quot;&quot;</span>
+        <span class="s0">try</span><span class="s1">:</span>
+            <span class="s1">alert_window = self.driver.switch_to.alert</span>
+            <span class="s0">return </span><span class="s1">alert_window.text</span>
+        <span class="s0">except </span><span class="s1">UnexpectedAlertPresentException:</span>
+            <span class="s1">alert_window = self.driver.switch_to.alert</span>
+            <span class="s0">return </span><span class="s1">alert_window.text</span>
+
+    <span class="s0">def </span><span class="s1">check_confirm_alert(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.CONFIRM_BOX_ALERT_BUTTON).click()</span>
+        <span class="s1">alert_window = self.driver.switch_to.alert</span>
+        <span class="s1">alert_window.accept()</span>
+        <span class="s1">text_result = self.element_is_present(self.locators.CONFIRM_RESULT).text</span>
+        <span class="s0">return </span><span class="s1">text_result</span>
+
+    <span class="s0">def </span><span class="s1">check_prompt_alert(self):</span>
+        <span class="s1">text = </span><span class="s4">f&quot;autotest</span><span class="s0">{</span><span class="s1">random.randint(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">999</span><span class="s1">)</span><span class="s0">}</span><span class="s4">&quot;</span>
+        <span class="s1">self.element_is_visible(self.locators.PROMPT_BOX_ALERT_BUTTON).click()</span>
+        <span class="s1">alert_window = self.driver.switch_to.alert</span>
+        <span class="s1">alert_window.send_keys(text)</span>
+        <span class="s1">alert_window.accept()</span>
+        <span class="s1">text_result = self.element_is_present(self.locators.PROMPT_RESULT).text</span>
+        <span class="s0">return </span><span class="s1">text</span><span class="s0">, </span><span class="s1">text_result</span>
+
+<span class="s0">class </span><span class="s1">FramesPage(BasePage):</span>
+    <span class="s1">locators = FramesPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">check_frame(self</span><span class="s0">, </span><span class="s1">frame_num):</span>
+        <span class="s0">if </span><span class="s1">frame_num == </span><span class="s4">'frame1'</span><span class="s1">:</span>
+            <span class="s1">frame = self.element_is_present(self.locators.FIRST_FRAME)</span>
+            <span class="s1">width = frame.get_attribute(</span><span class="s4">'width'</span><span class="s1">)</span>
+            <span class="s1">height = frame.get_attribute(</span><span class="s4">'height'</span><span class="s1">)</span>
+            <span class="s1">self.driver.switch_to.frame(frame)</span>
+            <span class="s1">text = self.element_is_present(self.locators.TITLE_FRAME).text</span>
+            <span class="s1">self.driver.switch_to.default_content()</span>
+            <span class="s0">return </span><span class="s1">[text</span><span class="s0">, </span><span class="s1">width</span><span class="s0">, </span><span class="s1">height]</span>
+        <span class="s0">if </span><span class="s1">frame_num == </span><span class="s4">'frame2'</span><span class="s1">:</span>
+            <span class="s1">frame = self.element_is_present(self.locators.SECOND_FRAME)</span>
+            <span class="s1">width = frame.get_attribute(</span><span class="s4">'width'</span><span class="s1">)</span>
+            <span class="s1">height = frame.get_attribute(</span><span class="s4">'height'</span><span class="s1">)</span>
+            <span class="s1">self.driver.switch_to.frame(frame)</span>
+            <span class="s1">text = self.element_is_present(self.locators.TITLE_FRAME).text</span>
+            <span class="s1">self.driver.switch_to.default_content()</span>
+            <span class="s0">return </span><span class="s1">[text</span><span class="s0">, </span><span class="s1">width</span><span class="s0">, </span><span class="s1">height]</span>
+
+<span class="s0">class </span><span class="s1">NestedFramesPage(BasePage):</span>
+    <span class="s1">locators = NestedFramesPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">check_nested_frame(self):</span>
+        <span class="s1">parent_frame = self.element_is_present(self.locators.PARENT_FRAME)</span>
+        <span class="s1">self.driver.switch_to.frame(parent_frame)</span>
+        <span class="s1">parent_text = self.element_is_present(self.locators.PARENT_TEXT).text</span>
+        <span class="s1">child_frame = self.element_is_present(self.locators.CHILD_FRAME)</span>
+        <span class="s1">self.driver.switch_to.frame(child_frame)</span>
+        <span class="s1">child_text = self.element_is_present(self.locators.CHILD_TEXT).text</span>
+        <span class="s0">return </span><span class="s1">parent_text</span><span class="s0">, </span><span class="s1">child_text</span>
+
+<span class="s0">class </span><span class="s1">ModalDialogsPage(BasePage):</span>
+    <span class="s1">locators = ModalDialogsPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">check_modal_dialogs(self):</span>
+        <span class="s1">self.element_is_visible(self.locators.SMALL_MODAL_BUTTON).click()</span>
+        <span class="s1">title_small = self.element_is_visible(self.locators.TITLE_SMALL_MODAL).text</span>
+        <span class="s1">body_small_text = self.element_is_visible(self.locators.BODY_SMALL_MODAL).text</span>
+        <span class="s1">self.element_is_visible(self.locators.SMALL_MODAL_CLOSE_BUTTON).click()</span>
+        <span class="s1">self.element_is_visible(self.locators.LARGE_MODAL_BUTTON).click()</span>
+        <span class="s1">title_large = self.element_is_visible(self.locators.TITLE_LARGE_MODAL).text</span>
+        <span class="s1">body_large_text = self.element_is_visible(self.locators.BODY_LARGE_MODAL).text</span>
+        <span class="s0">return </span><span class="s1">[title_small</span><span class="s0">, </span><span class="s1">len(body_small_text)]</span><span class="s0">, </span><span class="s1">[title_large</span><span class="s0">, </span><span class="s1">len(body_large_text)]</span>
+
+
+
+</pre>
+</body>
+</html>

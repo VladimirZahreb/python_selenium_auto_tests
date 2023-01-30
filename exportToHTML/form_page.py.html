@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>form_page.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+form_page.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">os</span>
+<span class="s0">import </span><span class="s1">time</span>
+
+<span class="s0">from </span><span class="s1">selenium.webdriver </span><span class="s0">import </span><span class="s1">Keys</span>
+
+<span class="s0">from </span><span class="s1">generator.generator </span><span class="s0">import </span><span class="s1">generated_person</span><span class="s0">, </span><span class="s1">generated_file</span>
+<span class="s0">from </span><span class="s1">locators.form_page_locators </span><span class="s0">import </span><span class="s1">FormPageLocators    </span>
+<span class="s0">from </span><span class="s1">pages.base_page </span><span class="s0">import </span><span class="s1">BasePage</span>
+
+
+<span class="s0">class </span><span class="s1">FormPage(BasePage):</span>
+    <span class="s1">locators = FormPageLocators()</span>
+
+    <span class="s0">def </span><span class="s1">fill_form_fields(self):</span>
+        <span class="s1">person = next(generated_person())</span>
+        <span class="s1">file_name</span><span class="s0">, </span><span class="s1">path = generated_file()</span>
+        <span class="s1">self.remove_footer()</span>
+        <span class="s2"># self.remove_footer1()</span>
+        <span class="s1">self.element_is_visible(self.locators.FIRST_NAME).send_keys(person.firstname)</span>
+        <span class="s1">self.element_is_visible(self.locators.LAST_NAME).send_keys(person.lastname)</span>
+        <span class="s1">self.element_is_visible(self.locators.EMAIL).send_keys(person.email)</span>
+        <span class="s1">self.element_is_visible(self.locators.GENDER).click()</span>
+        <span class="s1">self.element_is_visible(self.locators.MOBILE).send_keys(person.mobile)</span>
+        <span class="s1">self.element_is_visible(self.locators.SUBJECT).send_keys(</span><span class="s3">&quot;Math&quot;</span><span class="s1">)</span>
+        <span class="s1">self.element_is_visible(self.locators.SUBJECT).send_keys(Keys.RETURN)</span>
+        <span class="s1">self.element_is_visible(self.locators.HOBBIES).click()</span>
+        <span class="s1">self.element_is_present(self.locators.FILE_INPUT).send_keys(path)</span>
+        <span class="s1">os.remove(path)</span>
+        <span class="s1">self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(person.current_address)</span>
+        <span class="s1">self.element_is_visible(self.locators.SELECT_STATE).click()</span>
+        <span class="s1">self.element_is_visible(self.locators.STATE_INPUT).send_keys(Keys.RETURN)</span>
+        <span class="s1">self.element_is_visible(self.locators.SELECT_CITY).click()</span>
+        <span class="s1">self.element_is_visible(self.locators.CITY_INPUT).send_keys(Keys.RETURN)</span>
+        <span class="s1">self.element_is_visible(self.locators.SUBMIT).click()</span>
+        <span class="s0">return </span><span class="s1">person</span>
+
+    <span class="s0">def </span><span class="s1">form_result(self):</span>
+        <span class="s1">result_list = self.elements_are_visible(self.locators.RESULT_TABLE)</span>
+        <span class="s1">data = []</span>
+        <span class="s0">for </span><span class="s1">item </span><span class="s0">in </span><span class="s1">result_list:</span>
+            <span class="s1">self.go_to_element(item)</span>
+            <span class="s1">data.append(item.text)</span>
+        <span class="s0">return </span><span class="s1">data</span></pre>
+</body>
+</html>

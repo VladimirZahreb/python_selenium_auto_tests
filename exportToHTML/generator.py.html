@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>generator.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+generator.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">from </span><span class="s1">data.data </span><span class="s0">import </span><span class="s1">Person</span><span class="s0">, </span><span class="s1">Color</span><span class="s0">, </span><span class="s1">Date</span>
+<span class="s0">from </span><span class="s1">faker </span><span class="s0">import </span><span class="s1">Faker</span>
+
+<span class="s1">faker_ru = Faker(</span><span class="s2">'ru_RU'</span><span class="s1">)</span>
+<span class="s1">fake_en = Faker(</span><span class="s2">'En'</span><span class="s1">)</span>
+<span class="s1">Faker.seed()</span>
+
+<span class="s0">def </span><span class="s1">generated_person():</span>
+    <span class="s0">yield </span><span class="s1">Person(</span>
+        <span class="s1">full_name=faker_ru.first_name() + </span><span class="s2">&quot; &quot; </span><span class="s1">+ faker_ru.last_name() + </span><span class="s2">&quot; &quot; </span><span class="s1">+ faker_ru.middle_name()</span><span class="s0">,</span>
+        <span class="s1">firstname=faker_ru.first_name()</span><span class="s0">,</span>
+        <span class="s1">lastname=faker_ru.last_name()</span><span class="s0">,</span>
+        <span class="s1">age=random.randint(</span><span class="s3">10</span><span class="s0">, </span><span class="s3">80</span><span class="s1">)</span><span class="s0">,</span>
+        <span class="s1">salary=random.randint(</span><span class="s3">10000</span><span class="s0">, </span><span class="s3">100000</span><span class="s1">)</span><span class="s0">,</span>
+        <span class="s1">department=faker_ru.job()</span><span class="s0">,</span>
+        <span class="s1">email=faker_ru.email()</span><span class="s0">,</span>
+        <span class="s1">current_address=faker_ru.address()</span><span class="s0">,</span>
+        <span class="s1">permanent_address=faker_ru.address()</span><span class="s0">,</span>
+        <span class="s1">mobile=faker_ru.msisdn()</span><span class="s0">,</span>
+    <span class="s1">)</span>
+
+<span class="s0">def </span><span class="s1">generated_file():</span>
+    <span class="s1">path = </span><span class="s2">rf'C:\Automation\filetest</span><span class="s0">{</span><span class="s1">random.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">999</span><span class="s1">)</span><span class="s0">}</span><span class="s2">.txt'</span>
+    <span class="s1">file = open(path</span><span class="s0">, </span><span class="s2">'w+'</span><span class="s1">)</span>
+    <span class="s1">file.write(</span><span class="s2">f'Hello World</span><span class="s0">{</span><span class="s1">random.randint(</span><span class="s3">0</span><span class="s0">, </span><span class="s3">999</span><span class="s1">)</span><span class="s0">}</span><span class="s2">'</span><span class="s1">)</span>
+    <span class="s1">file.close()</span>
+    <span class="s0">return </span><span class="s1">file.name</span><span class="s0">, </span><span class="s1">path</span>
+
+<span class="s0">def </span><span class="s1">generated_color():</span>
+    <span class="s0">yield </span><span class="s1">Color(</span>
+        <span class="s1">color_name=[</span><span class="s2">&quot;Red&quot;</span><span class="s0">, </span><span class="s2">&quot;Blue&quot;</span><span class="s0">, </span><span class="s2">&quot;Green&quot;</span><span class="s0">, </span><span class="s2">&quot;Yellow&quot;</span><span class="s0">, </span><span class="s2">&quot;Purple&quot;</span><span class="s0">, </span><span class="s2">&quot;Black&quot;</span><span class="s0">, </span><span class="s2">&quot;White&quot;</span><span class="s0">, </span><span class="s2">&quot;Voilet&quot;</span><span class="s0">, </span><span class="s2">&quot;Indigo&quot;</span><span class="s0">, </span><span class="s2">&quot;Magenta&quot;</span><span class="s0">, </span><span class="s2">&quot;Aqua&quot;</span><span class="s1">]</span>
+    <span class="s1">)</span>
+
+
+<span class="s0">def </span><span class="s1">generated_date():</span>
+    <span class="s0">yield </span><span class="s1">Date(</span>
+        <span class="s1">year=fake_en.year()</span><span class="s0">,</span>
+        <span class="s1">month=fake_en.month_name()</span><span class="s0">,</span>
+        <span class="s1">day=fake_en.day_of_month()</span><span class="s0">,</span>
+        <span class="s1">time=</span><span class="s2">&quot;12:00&quot;</span>
+    <span class="s1">)</span>
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>interactions_test.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+interactions_test.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">pages.interactions_page </span><span class="s0">import </span><span class="s1">SortablePage</span><span class="s0">, </span><span class="s1">SelectablePage</span><span class="s0">, </span><span class="s1">ResizablePage</span><span class="s0">, </span><span class="s1">DroppablePage</span><span class="s0">, </span><span class="s1">DraggablePage</span>
+
+
+<span class="s0">class </span><span class="s1">TestInteractions:</span>
+    <span class="s0">class </span><span class="s1">TestSortablePage:</span>
+
+        <span class="s0">def </span><span class="s1">test_sortable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">sortable_page = SortablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/sortable'</span><span class="s1">)</span>
+            <span class="s1">sortable_page.open()</span>
+            <span class="s1">list_before</span><span class="s0">, </span><span class="s1">list_after = sortable_page.change_list_order()</span>
+            <span class="s1">grid_before</span><span class="s0">, </span><span class="s1">grid_after = sortable_page.change_grid_order()</span>
+            <span class="s0">assert </span><span class="s1">list_before != list_after</span><span class="s0">, </span><span class="s2">'the order of the list has not been changed'</span>
+            <span class="s0">assert </span><span class="s1">grid_before != grid_after</span><span class="s0">, </span><span class="s2">'the order of the grid has not been changed'</span>
+
+    <span class="s0">class </span><span class="s1">TestSelectablePage:</span>
+
+        <span class="s0">def </span><span class="s1">test_selectable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">selectable_page = SelectablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/selectable'</span><span class="s1">)</span>
+            <span class="s1">selectable_page.open()</span>
+            <span class="s1">item_list = selectable_page.select_list_item()</span>
+            <span class="s1">item_grid = selectable_page.select_grid_item()</span>
+            <span class="s0">assert </span><span class="s1">len(item_list) &gt; </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;no elements were selected&quot;</span>
+            <span class="s0">assert </span><span class="s1">len(item_grid) &gt; </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;no elements were selected&quot;</span>
+
+
+    <span class="s0">class </span><span class="s1">TestResizablePage:</span>
+
+        <span class="s0">def </span><span class="s1">test_resizable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">resizable_page = ResizablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/resizable'</span><span class="s1">)</span>
+            <span class="s1">resizable_page.open()</span>
+            <span class="s1">max_box</span><span class="s0">, </span><span class="s1">min_box = resizable_page.change_size_resizable_box()</span>
+            <span class="s1">max_resize</span><span class="s0">, </span><span class="s1">min_resize = resizable_page.change_size_resizable()</span>
+            <span class="s0">assert </span><span class="s1">(</span><span class="s2">'500px'</span><span class="s0">, </span><span class="s2">'300px'</span><span class="s1">) == max_box</span><span class="s0">, </span><span class="s2">&quot;maximum size not equal to '500px', '300px'&quot;</span>
+            <span class="s0">assert </span><span class="s1">(</span><span class="s2">'150px'</span><span class="s0">, </span><span class="s2">'150px'</span><span class="s1">) == min_box</span><span class="s0">, </span><span class="s2">&quot;minimum size not equal to '150px', '150px'&quot;</span>
+            <span class="s0">assert </span><span class="s1">min_resize != max_resize</span><span class="s0">, </span><span class="s2">&quot;resizable has not been changed&quot;</span>
+
+
+    <span class="s0">class </span><span class="s1">TestDroppablePage:</span>
+
+        <span class="s0">def </span><span class="s1">test_simple_droppable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">droppable_page = DroppablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/droppable'</span><span class="s1">)</span>
+            <span class="s1">droppable_page.open()</span>
+            <span class="s1">text = droppable_page.drop_simple()</span>
+            <span class="s4"># print(text)</span>
+            <span class="s0">assert </span><span class="s1">text == </span><span class="s2">'Dropped!'</span><span class="s0">, </span><span class="s2">&quot;the elements has not been dropped&quot;</span>
+
+
+        <span class="s0">def </span><span class="s1">test_accept_droppable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">droppable_page = DroppablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/droppable'</span><span class="s1">)</span>
+            <span class="s1">droppable_page.open()</span>
+            <span class="s1">not_accept</span><span class="s0">, </span><span class="s1">accept = droppable_page.drop_accept()</span>
+            <span class="s4"># print(not_accept)</span>
+            <span class="s4"># print(accept)</span>
+            <span class="s0">assert </span><span class="s1">not_accept == </span><span class="s2">'Drop here'</span><span class="s0">, </span><span class="s2">&quot;the dropped element has been accepted&quot;</span>
+            <span class="s0">assert </span><span class="s1">accept == </span><span class="s2">'Dropped!'</span><span class="s0">, </span><span class="s2">&quot;the dropped element has not been accepted&quot;</span>
+
+
+        <span class="s0">def </span><span class="s1">test_prevent_propogation_droppable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">droppable_page = DroppablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/droppable'</span><span class="s1">)</span>
+            <span class="s1">droppable_page.open()</span>
+            <span class="s1">not_greedy</span><span class="s0">, </span><span class="s1">not_greedy_inner</span><span class="s0">, </span><span class="s1">greedy</span><span class="s0">, </span><span class="s1">greedy_inner = droppable_page.drop_prevent_propogation()</span>
+            <span class="s1">print(not_greedy)</span>
+            <span class="s1">print(not_greedy_inner)</span>
+            <span class="s1">print(greedy)</span>
+            <span class="s1">print(greedy_inner)</span>
+            <span class="s0">assert </span><span class="s1">not_greedy == </span><span class="s2">'Dropped!'</span><span class="s0">, </span><span class="s2">&quot;the elements texts has not been changed&quot;</span>
+            <span class="s0">assert </span><span class="s1">not_greedy_inner == </span><span class="s2">'Dropped!'</span><span class="s0">, </span><span class="s2">&quot;the elements texts has not been changed&quot;</span>
+            <span class="s0">assert </span><span class="s1">greedy == </span><span class="s2">'Outer droppable'</span><span class="s0">, </span><span class="s2">&quot;the elements texts has been changed&quot;</span>
+            <span class="s0">assert </span><span class="s1">greedy_inner == </span><span class="s2">'Dropped!'</span><span class="s0">, </span><span class="s2">&quot;the elements texts has not been changed&quot;</span>
+
+
+        <span class="s0">def </span><span class="s1">test_revert_draggable_droppable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">droppable_page = DroppablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/droppable'</span><span class="s1">)</span>
+            <span class="s1">droppable_page.open()</span>
+            <span class="s1">will_after_move</span><span class="s0">, </span><span class="s1">will_after_revert = droppable_page.drop_revert_draggable(</span><span class="s2">'will'</span><span class="s1">)</span>
+            <span class="s1">not_will_after_move</span><span class="s0">, </span><span class="s1">not_will_after_revert = droppable_page.drop_revert_draggable(</span><span class="s2">'not_will'</span><span class="s1">)</span>
+            <span class="s4"># print(will_after_move)</span>
+            <span class="s4"># print(will_after_revert)</span>
+            <span class="s4"># print(not_will_after_move)</span>
+            <span class="s4"># print(not_will_after_revert)</span>
+            <span class="s0">assert </span><span class="s1">will_after_move != will_after_revert</span><span class="s0">, </span><span class="s2">'the elements has not reverted'</span>
+            <span class="s0">assert </span><span class="s1">not_will_after_move == not_will_after_revert</span><span class="s0">, </span><span class="s2">'the elements has  reverted'</span>
+
+
+    <span class="s0">class </span><span class="s1">TestDraggablePage:</span>
+
+        <span class="s0">def </span><span class="s1">test_simple_draggable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">draggable_page = DraggablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/dragabble'</span><span class="s1">)</span>
+            <span class="s1">draggable_page.open()</span>
+            <span class="s1">before</span><span class="s0">, </span><span class="s1">after = draggable_page.simple_drag_box()</span>
+            <span class="s0">assert </span><span class="s1">before != after</span><span class="s0">, </span><span class="s2">&quot;the position of the box has not been changed&quot;</span>
+
+
+        <span class="s0">def </span><span class="s1">test_axis_restricted_draggable(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">draggable_page = DraggablePage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/dragabble'</span><span class="s1">)</span>
+            <span class="s1">draggable_page.open()</span>
+            <span class="s1">top_x</span><span class="s0">, </span><span class="s1">left_x = draggable_page.axis_restricted_x()</span>
+            <span class="s1">top_y</span><span class="s0">, </span><span class="s1">left_y = draggable_page.axis_restricted_y()</span>
+            <span class="s0">assert </span><span class="s1">top_x[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] == top_x[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] </span><span class="s0">and </span><span class="s1">int(</span>
+                <span class="s1">top_x[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">]) == </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;box position has not changed or there has been a shift in the y-axis&quot;</span>
+            <span class="s0">assert </span><span class="s1">left_x[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] != left_x[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] </span><span class="s0">and </span><span class="s1">int(</span>
+                <span class="s1">left_x[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">]) != </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;box position has not changed or there has been a shift in the y-axis&quot;</span>
+            <span class="s0">assert </span><span class="s1">top_y[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] != top_y[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] </span><span class="s0">and </span><span class="s1">int(</span>
+                <span class="s1">top_y[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">]) != </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;box position has not changed or there has been a shift in the x-axis&quot;</span>
+            <span class="s0">assert </span><span class="s1">left_y[</span><span class="s3">0</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] == left_y[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">] </span><span class="s0">and </span><span class="s1">int(</span>
+                <span class="s1">left_y[</span><span class="s3">1</span><span class="s1">][</span><span class="s3">0</span><span class="s1">]) == </span><span class="s3">0</span><span class="s0">, </span><span class="s2">&quot;box position has not changed or there has been a shift in the x-axis&quot;</span></pre>
+</body>
+</html>

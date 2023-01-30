@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>data.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+data.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">dataclasses </span><span class="s0">import </span><span class="s1">dataclass</span>
+
+
+<span class="s1">@dataclass</span>
+<span class="s0">class </span><span class="s1">Person:</span>
+    <span class="s1">full_name: str = </span><span class="s0">None</span>
+    <span class="s1">firstname: str = </span><span class="s0">None</span>
+    <span class="s1">lastname: str = </span><span class="s0">None</span>
+    <span class="s1">age: int = </span><span class="s0">None</span>
+    <span class="s1">salary: int = </span><span class="s0">None</span>
+    <span class="s1">department: str = </span><span class="s0">None</span>
+    <span class="s1">email: str = </span><span class="s0">None</span>
+    <span class="s1">current_address: str = </span><span class="s0">None</span>
+    <span class="s1">permanent_address: str = </span><span class="s0">None</span>
+    <span class="s1">mobile: str = </span><span class="s0">None</span>
+
+<span class="s1">@dataclass</span>
+<span class="s0">class </span><span class="s1">Color:</span>
+    <span class="s1">color_name: list = </span><span class="s0">None</span>
+
+
+<span class="s1">@dataclass</span>
+<span class="s0">class </span><span class="s1">Date:</span>
+    <span class="s1">day: str = </span><span class="s0">None</span>
+    <span class="s1">month: str = </span><span class="s0">None</span>
+    <span class="s1">year: str = </span><span class="s0">None</span>
+    <span class="s1">time: str = </span><span class="s0">None</span></pre>
+</body>
+</html>

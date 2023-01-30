@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>conftest.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+conftest.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">pytest</span>
+<span class="s0">from </span><span class="s1">selenium </span><span class="s0">import </span><span class="s1">webdriver</span>
+<span class="s0">from </span><span class="s1">webdriver_manager.chrome </span><span class="s0">import </span><span class="s1">ChromeDriverManager</span>
+
+
+<span class="s1">@pytest.fixture(scope=</span><span class="s2">'function'</span><span class="s1">)</span>
+<span class="s0">def </span><span class="s1">driver():</span>
+    <span class="s3"># driver = webdriver.Chrome()</span>
+    <span class="s1">driver = webdriver.Chrome(ChromeDriverManager().install())</span>
+    <span class="s1">driver.maximize_window()</span>
+    <span class="s0">yield </span><span class="s1">driver</span>
+    <span class="s1">driver.quit()</span>
+
+    <span class="s3"># service = driver_service</span>
+    <span class="s3"># scope = 'function'</span></pre>
+</body>
+</html>

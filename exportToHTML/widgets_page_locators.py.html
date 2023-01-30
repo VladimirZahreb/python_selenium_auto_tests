@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>widgets_page_locators.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+widgets_page_locators.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">selenium.webdriver.common.by </span><span class="s0">import </span><span class="s1">By</span>
+
+
+<span class="s0">class </span><span class="s1">AccordianPageLocators:</span>
+    <span class="s1">SECTION_FIRST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section1Heading&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SECTION_CONTENT_FIRST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section1Content&quot;] p'</span><span class="s1">)</span>
+    <span class="s1">SECTION_SECOND = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section2Heading&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SECTION_CONTENT_SECOND = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section2Content&quot;] p'</span><span class="s1">)</span>
+    <span class="s1">SECTION_THIRD = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section3Heading&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SECTION_CONTENT_THIRD = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;section3Content&quot;] p'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">AutoCompletePageLocators:</span>
+    <span class="s1">MULTI_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;autoCompleteMultipleInput&quot;]'</span><span class="s1">)</span>
+    <span class="s1">MULTI_VALUE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;css-1rhbuit-multiValue auto-complete__multi-value&quot;]'</span><span class="s1">)</span>
+    <span class="s1">MULTI_VALUE_REMOVE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;css-1rhbuit-multiValue auto-complete__multi-value&quot;] svg path'</span><span class="s1">)</span>
+    <span class="s1">SINGLE_VALUE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;auto-complete__single-value css-1uccc91-singleValue&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SINGLE_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;autoCompleteSingleInput&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">DatePickerPageLocators:</span>
+    <span class="s1">DATE_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;datePickerMonthYearInput&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_SELECT_MONTH = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'select[class=&quot;react-datepicker__month-select&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_SELECT_YEAR = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'select[class=&quot;react-datepicker__year-select&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_SELECT_DAY_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class^=&quot;react-datepicker__day react-datepicker__day&quot;]'</span><span class="s1">)</span>
+
+    <span class="s1">DATE_AND_TIME_INPUT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;dateAndTimePickerInput&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_AND_TIME_MONTH = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;react-datepicker__month-read-view&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_AND_TIME_YEAR = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;react-datepicker__year-read-view&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_AND_TIME_TIME_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'li[class=&quot;react-datepicker__time-list-item &quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_AND_TIME_MONTH_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;react-datepicker__month-option&quot;]'</span><span class="s1">)</span>
+    <span class="s1">DATE_AND_TIME_YEAR_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;react-datepicker__year-option&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">SliderPageLocators:</span>
+    <span class="s1">INPUT_SLIDER = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[class=&quot;range-slider range-slider--primary&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SLIDER_VALUE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;sliderValue&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">ProgressBarPageLocators:</span>
+    <span class="s1">PROGRESS_BAR_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;startStopButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">PROGRESS_BAR_VALUE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;progress-bar bg-info&quot;]'</span><span class="s1">)</span>
+
+
+<span class="s0">class </span><span class="s1">TabsPageLocators:</span>
+    <span class="s1">TABS_WHAT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-what&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_WHAT_CONTENT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-what&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_ORIGIN = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-origin&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_ORIGIN_CONTENT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-origin&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_USE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-use&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_USE_CONTENT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-use&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_MORE = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[id=&quot;demo-tab-more&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TABS_MORE_CONTENT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;demo-tabpane-more&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">ToolTipsPageLocators:</span>
+    <span class="s1">BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;toolTipButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TOOL_TIP_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[aria-describedby=&quot;buttonToolTip&quot;]'</span><span class="s1">)</span>
+    <span class="s1">FIELD = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[id=&quot;toolTipTextField&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TOOL_TIP_FIELD = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'input[aria-describedby=&quot;textFieldToolTip&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CONTRARY_LINK = (By.XPATH</span><span class="s0">, </span><span class="s2">'//*[.=&quot;Contrary&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TOOL_TIP_CONTRARY = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[aria-describedby=&quot;contraryTexToolTip&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SECTION_LINK = (By.XPATH</span><span class="s0">, </span><span class="s2">'//*[.=&quot;1.10.32&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TOOL_TIP_SECTION = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'a[aria-describedby=&quot;sectionToolTip&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TOOL_TIPS_INNERS = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;tooltip-inner&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">MenuPageLocators:</span>
+    <span class="s1">MENU_ITEM_LIST = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'ul[id=&quot;nav&quot;] li a'</span><span class="s1">)</span></pre>
+</body>
+</html>

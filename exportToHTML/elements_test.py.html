@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>elements_test.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+elements_test.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">random</span>
+<span class="s0">import </span><span class="s1">time</span>
+<span class="s0">from </span><span class="s1">pages.elements_page </span><span class="s0">import </span><span class="s1">TextBoxPage</span><span class="s0">, </span><span class="s1">CheckBoxPage</span><span class="s0">, </span><span class="s1">RadioButtonPage</span><span class="s0">, </span><span class="s1">WebTablePage</span><span class="s0">, </span><span class="s1">ButtonsPage</span><span class="s0">, </span><span class="s1">LinksPage</span><span class="s0">, </span><span class="s1">UploadAndDownloadPage</span><span class="s0">, </span><span class="s1">DynamicPropertiesPage</span>
+<span class="s0">from </span><span class="s1">selenium </span><span class="s0">import </span><span class="s1">webdriver</span>
+
+<span class="s2"># from pages.base_page import BasePage</span>
+<span class="s2"># from locators.elements_page_locators import TextBoxPageLocators</span>
+
+<span class="s2"># # def test(driver):</span>
+<span class="s2">#     page = BasePage(driver, 'https://rozetka.com.ua/ua/')</span>
+<span class="s2">#     page.open()</span>
+<span class="s2">#     time.sleep(3)</span>
+
+<span class="s0">class </span><span class="s1">TestElements:</span>
+    <span class="s0">class </span><span class="s1">TestTextBox:</span>
+
+        <span class="s0">def </span><span class="s1">test_text_box(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">text_box_page = TextBoxPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/text-box'</span><span class="s1">)</span>
+            <span class="s1">text_box_page.open()</span>
+            <span class="s2"># input_data = text_box_page.fill_all_fields()</span>
+            <span class="s2"># output_date = text_box_page.check_filled_form()</span>
+            <span class="s1">full_name</span><span class="s0">, </span><span class="s1">email</span><span class="s0">, </span><span class="s1">current_address</span><span class="s0">, </span><span class="s1">permanent_address = text_box_page.fill_all_fields()</span>
+            <span class="s2"># time.sleep(10)</span>
+            <span class="s1">output_name</span><span class="s0">, </span><span class="s1">output_email</span><span class="s0">, </span><span class="s1">output_current_address</span><span class="s0">, </span><span class="s1">output_permanent_address = text_box_page.check_filled_form()</span>
+            <span class="s2"># time.sleep(10)</span>
+
+            <span class="s2"># print(output_name, output_email, current_address, permanent_address)</span>
+            <span class="s2"># print(text_box_page.check_filled_form())</span>
+            <span class="s2"># print(output_name)</span>
+            <span class="s2"># print(output_email)</span>
+            <span class="s2"># print(output_current_address)</span>
+            <span class="s2"># print(output_permanent_address)</span>
+            <span class="s2"># &quot;&quot;&quot;Більше читабельно&quot;&quot;&quot;</span>
+            <span class="s0">assert </span><span class="s1">full_name == output_name</span><span class="s0">, </span><span class="s3">&quot;the full_name does not math&quot;</span>
+            <span class="s0">assert </span><span class="s1">email == output_email</span><span class="s0">, </span><span class="s3">&quot;the email does not math&quot;</span>
+            <span class="s0">assert </span><span class="s1">current_address == output_current_address</span><span class="s0">, </span><span class="s3">&quot;the current_address does not math&quot;</span>
+            <span class="s0">assert </span><span class="s1">permanent_address == output_permanent_address</span><span class="s0">, </span><span class="s3">&quot;the permanent_address does not math&quot;</span>
+            <span class="s2"># &quot;&quot;&quot;Менше читабельно&quot;&quot;&quot;</span>
+            <span class="s2"># assert input_data == output_date</span>
+
+    <span class="s0">class </span><span class="s1">TestCheckBox:</span>
+        <span class="s0">def </span><span class="s1">test_check_box(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">check_box_page = CheckBoxPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/checkbox'</span><span class="s1">)</span>
+            <span class="s1">check_box_page.open()</span>
+            <span class="s1">check_box_page.open_full_list()</span>
+            <span class="s1">check_box_page.click_random_checkbox()</span>
+            <span class="s2"># time.sleep(5)</span>
+            <span class="s1">input_checkbox = check_box_page.get_checked_checkboxes()</span>
+            <span class="s1">output_result = check_box_page = get_output_result()</span>
+            <span class="s1">print(input_checkbox)</span>
+            <span class="s1">print(output_result)</span>
+            <span class="s0">assert </span><span class="s1">input_checkbox == output_result</span><span class="s0">, </span><span class="s3">'checkboxes have not been selected'</span>
+
+
+    <span class="s0">class </span><span class="s1">TestRadioButton:</span>
+
+        <span class="s0">def </span><span class="s1">test_radio_button(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">radio_button_page = RadioButtonPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/radio-button'</span><span class="s1">)</span>
+            <span class="s1">radio_button_page.open()</span>
+            <span class="s1">radio_button_page.click_on_the_radio_button(</span><span class="s3">'yes'</span><span class="s1">)</span>
+            <span class="s1">output_yes = radio_button_page.get_output_result()</span>
+            <span class="s1">radio_button_page.click_on_the_radio_button(</span><span class="s3">'impressive'</span><span class="s1">)</span>
+            <span class="s1">output_impressive = radio_button_page.get_output_result()</span>
+            <span class="s1">radio_button_page.click_on_the_radio_button(</span><span class="s3">'no'</span><span class="s1">)</span>
+            <span class="s1">output_no = radio_button_page.get_output_result()</span>
+            <span class="s0">assert </span><span class="s1">output_yes == </span><span class="s3">'Yes'</span><span class="s0">, </span><span class="s3">&quot;'Yes' have not been selected&quot;</span>
+            <span class="s0">assert </span><span class="s1">output_impressive == </span><span class="s3">'Impressive'</span><span class="s0">, </span><span class="s3">&quot;'Impressive' have not been selected&quot;</span>
+            <span class="s0">assert </span><span class="s1">output_no == </span><span class="s3">&quot;No&quot;</span><span class="s0">, </span><span class="s3">&quot;'No' have not been selected&quot;</span>
+
+
+    <span class="s0">class </span><span class="s1">TestWebTable:</span>
+
+        <span class="s0">def </span><span class="s1">test_web_table_add_person(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">web_table_page = WebTablePage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/webtables'</span><span class="s1">)</span>
+            <span class="s1">web_table_page.open()</span>
+            <span class="s1">new_person = web_table_page.add_new_person()</span>
+            <span class="s2"># time.sleep(5)</span>
+            <span class="s1">table_result = web_table_page.check_new_added_person()</span>
+            <span class="s1">web_table_page.check_new_added_person()</span>
+            <span class="s1">print(new_person)</span>
+            <span class="s1">print(table_result)</span>
+            <span class="s0">assert </span><span class="s1">new_person </span><span class="s0">in </span><span class="s1">table_result</span>
+
+
+        <span class="s0">def </span><span class="s1">test_web_table_search_person(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">web_table_page = WebTablePage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/webtables'</span><span class="s1">)</span>
+            <span class="s1">web_table_page.open()</span>
+            <span class="s1">key_word = web_table_page.add_new_person()[random.randint(</span><span class="s4">0</span><span class="s0">, </span><span class="s4">5</span><span class="s1">)]</span>
+            <span class="s1">web_table_page.search_some_person(key_word)</span>
+            <span class="s1">table_result = web_table_page.check_search_person()</span>
+            <span class="s1">print(key_word)</span>
+            <span class="s1">print(table_result)</span>
+            <span class="s0">assert </span><span class="s1">key_word </span><span class="s0">in </span><span class="s1">table_result</span><span class="s0">, </span><span class="s3">&quot;the person was not found in the table&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_web_table_update_person_info(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">web_table_page = WebTablePage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/webtables'</span><span class="s1">)</span>
+            <span class="s1">web_table_page.open()</span>
+            <span class="s1">lastname = web_table_page.add_new_person()[</span><span class="s4">1</span><span class="s1">]</span>
+            <span class="s1">web_table_page.search_some_person(lastname)</span>
+            <span class="s2"># time.sleep(7)</span>
+            <span class="s1">age = web_table_page.update_person_info()</span>
+            <span class="s1">row = web_table_page.check_search_person()</span>
+            <span class="s1">print(age)</span>
+            <span class="s1">print(row)</span>
+            <span class="s0">assert </span><span class="s1">age </span><span class="s0">in </span><span class="s1">row</span><span class="s0">, </span><span class="s3">&quot;the person card has not been chanched&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_web_table_delete_person(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">web_table_page = WebTablePage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/webtables'</span><span class="s1">)</span>
+            <span class="s1">web_table_page.open()</span>
+            <span class="s1">email = web_table_page.add_new_person()[</span><span class="s4">3</span><span class="s1">]</span>
+            <span class="s2"># time.sleep(3)</span>
+            <span class="s1">web_table_page.search_some_person(email)</span>
+            <span class="s2"># time.sleep(3)</span>
+            <span class="s1">web_table_page.delete_person()</span>
+            <span class="s1">text = web_table_page.check_deleted()</span>
+            <span class="s0">assert </span><span class="s1">text == </span><span class="s3">&quot;No rows found&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_web_table_change_count_row(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">web_table_page = WebTablePage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/webtables'</span><span class="s1">)</span>
+            <span class="s1">web_table_page.open()</span>
+            <span class="s1">count = web_table_page.select_up_to_some_rows()</span>
+            <span class="s0">assert </span><span class="s1">count == [</span><span class="s4">5</span><span class="s0">, </span><span class="s4">10</span><span class="s0">, </span><span class="s4">20</span><span class="s0">, </span><span class="s4">25</span><span class="s0">, </span><span class="s4">50</span><span class="s0">, </span><span class="s4">100</span><span class="s1">]</span><span class="s0">, </span><span class="s3">'The number of rows in the table has not been changed or has changed incorrectly'</span>
+
+
+    <span class="s0">class </span><span class="s1">TestButtonsPage:</span>
+        <span class="s0">def </span><span class="s1">test_different_click_on_the_buttons(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">button_page = ButtonsPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/buttons'</span><span class="s1">)</span>
+            <span class="s1">button_page.open()</span>
+            <span class="s1">double = button_page.click_on_different_button(</span><span class="s3">'double'</span><span class="s1">)</span>
+            <span class="s1">right = button_page.click_on_different_button(</span><span class="s3">'right'</span><span class="s1">)</span>
+            <span class="s1">click = button_page.click_on_different_button(</span><span class="s3">'click'</span><span class="s1">)</span>
+            <span class="s0">assert </span><span class="s1">double == </span><span class="s3">&quot;You have done a double click&quot;</span><span class="s0">, </span><span class="s3">&quot;The double click button was not pressed&quot;</span>
+            <span class="s0">assert </span><span class="s1">right == </span><span class="s3">&quot;You have done a right click&quot;</span><span class="s0">, </span><span class="s3">&quot;The right click button was not pressed&quot;</span>
+            <span class="s0">assert </span><span class="s1">click == </span><span class="s3">&quot;You have done a dynamic click&quot;</span><span class="s0">, </span><span class="s3">&quot;The dynamic click button was not pressed&quot;</span>
+
+
+    <span class="s0">class </span><span class="s1">TestLinksPage:</span>
+
+        <span class="s0">def </span><span class="s1">test_check_link(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">links_page = LinksPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/links'</span><span class="s1">)</span>
+            <span class="s1">links_page.open()</span>
+            <span class="s1">href_link</span><span class="s0">, </span><span class="s1">current_url = links_page.check_new_tab_simple_link()</span>
+            <span class="s0">assert </span><span class="s1">href_link == current_url</span><span class="s0">, </span><span class="s3">&quot;the link is broken or url is incorrect&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_broken_link(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">links_page = LinksPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/links'</span><span class="s1">)</span>
+            <span class="s1">links_page.open()</span>
+            <span class="s1">response_code = links_page.check_broken_link(</span><span class="s3">'https://demoqa.com/bad-request'</span><span class="s1">)</span>
+            <span class="s0">assert </span><span class="s1">response_code == </span><span class="s4">400</span><span class="s0">, </span><span class="s3">&quot;the link works or the status code in son 400&quot;</span>
+
+    <span class="s0">class </span><span class="s1">TestUploadAndDownload:</span>
+        <span class="s0">def </span><span class="s1">test_upload_file(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">upload_download_page = UploadAndDownloadPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/upload-download'</span><span class="s1">)</span>
+            <span class="s1">upload_download_page.open()</span>
+            <span class="s1">file_name</span><span class="s0">, </span><span class="s1">result = upload_download_page.upload_file()</span>
+            <span class="s0">assert </span><span class="s1">file_name == result</span><span class="s0">, </span><span class="s3">&quot;the file has not been uploaded&quot;</span>
+
+        <span class="s0">def </span><span class="s1">test_download_file(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">upload_download_page = UploadAndDownloadPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/upload-download'</span><span class="s1">)</span>
+            <span class="s1">upload_download_page.open()</span>
+            <span class="s1">check = upload_download_page.download_file()</span>
+            <span class="s0">assert </span><span class="s1">check </span><span class="s0">is True, </span><span class="s3">&quot;the file has not been downloaded&quot;</span>
+
+    <span class="s0">class </span><span class="s1">TestDynamicPropertiesPage:</span>
+
+        <span class="s0">def </span><span class="s1">test_dynamic_properties(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">dynamic_properties_page = DynamicPropertiesPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/dynamic-properties'</span><span class="s1">)</span>
+            <span class="s1">dynamic_properties_page.open()</span>
+            <span class="s1">color_before</span><span class="s0">, </span><span class="s1">color_after  = dynamic_properties_page.check_chanced_of_color()</span>
+            <span class="s0">assert </span><span class="s1">color_after != color_before</span>
+
+        <span class="s0">def </span><span class="s1">test_appear_button(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">dynamic_properties_page = DynamicPropertiesPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/dynamic-properties'</span><span class="s1">)</span>
+            <span class="s1">dynamic_properties_page.open()</span>
+            <span class="s1">appear = dynamic_properties_page.check_appear_of_button()</span>
+            <span class="s0">assert </span><span class="s1">appear </span><span class="s0">is True, </span><span class="s3">'button did not appear after 5 second'</span>
+
+        <span class="s0">def </span><span class="s1">test_enable_button(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">dynamic_properties_page = DynamicPropertiesPage(driver</span><span class="s0">, </span><span class="s3">'https://demoqa.com/dynamic-properties'</span><span class="s1">)</span>
+            <span class="s1">dynamic_properties_page.open()</span>
+            <span class="s1">enable = dynamic_properties_page.check_enable_button()</span>
+            <span class="s0">assert </span><span class="s1">enable </span><span class="s0">is True, </span><span class="s3">'button did not enable after 5 second'</span>
+
+</pre>
+</body>
+</html>

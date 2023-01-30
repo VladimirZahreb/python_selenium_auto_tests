@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>base_page.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+base_page.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">selenium.webdriver </span><span class="s0">import </span><span class="s1">ActionChains</span>
+<span class="s0">from </span><span class="s1">selenium.webdriver.support.ui </span><span class="s0">import </span><span class="s1">WebDriverWait </span><span class="s0">as </span><span class="s1">wait</span>
+<span class="s0">from </span><span class="s1">selenium.webdriver.support </span><span class="s0">import </span><span class="s1">expected_conditions </span><span class="s0">as </span><span class="s1">EC</span>
+
+<span class="s0">class </span><span class="s1">BasePage:</span>
+    <span class="s0">def </span><span class="s1">__init__(self</span><span class="s0">, </span><span class="s1">driver</span><span class="s0">, </span><span class="s1">url):</span>
+        <span class="s1">self.driver = driver</span>
+        <span class="s1">self.url = url</span>
+
+    <span class="s0">def </span><span class="s1">open(self):</span>
+        <span class="s1">self.driver.get(self.url)</span>
+
+    <span class="s0">def </span><span class="s1">element_is_visible(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s1">self.go_to_element(self.element_is_present(locator))</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.visibility_of_element_located(locator))</span>
+
+    <span class="s0">def </span><span class="s1">elements_are_visible(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.visibility_of_all_elements_located(locator))</span>
+
+    <span class="s0">def </span><span class="s1">element_is_present(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.presence_of_element_located(locator))</span>
+
+    <span class="s0">def </span><span class="s1">elements_are_present(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.presence_of_element_located(locator))</span>
+
+    <span class="s0">def </span><span class="s1">element_is_not_visible(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.invisibility_of_element_located(locator))</span>
+
+    <span class="s0">def </span><span class="s1">element_is_clicable(self</span><span class="s0">, </span><span class="s1">locator</span><span class="s0">, </span><span class="s1">timeout=</span><span class="s2">5</span><span class="s1">):</span>
+        <span class="s0">return </span><span class="s1">wait(self.driver</span><span class="s0">, </span><span class="s1">timeout).until(EC.element_to_be_clickable(locator))</span>
+
+    <span class="s0">def </span><span class="s1">go_to_element(self</span><span class="s0">, </span><span class="s1">element):</span>
+        <span class="s1">self.driver.execute_script(</span><span class="s3">&quot;arguments[0].scrollIntoView();&quot;</span><span class="s0">, </span><span class="s1">element)</span>
+
+    <span class="s0">def </span><span class="s1">action_double_click(self</span><span class="s0">, </span><span class="s1">element):</span>
+        <span class="s1">action = ActionChains(self.driver)</span>
+        <span class="s1">action.double_click(element)</span>
+        <span class="s1">action.perform()</span>
+
+    <span class="s0">def </span><span class="s1">action_right_click(self</span><span class="s0">, </span><span class="s1">element):</span>
+        <span class="s1">action = ActionChains(self.driver)</span>
+        <span class="s1">action.context_click(element)</span>
+        <span class="s1">action.perform()</span>
+
+    <span class="s0">def </span><span class="s1">action_drag_and_drop_by_offset(self</span><span class="s0">, </span><span class="s1">element</span><span class="s0">, </span><span class="s1">x_coords</span><span class="s0">, </span><span class="s1">y_coords):</span>
+        <span class="s1">action = ActionChains(self.driver)</span>
+        <span class="s1">action.drag_and_drop_by_offset(element</span><span class="s0">, </span><span class="s1">x_coords</span><span class="s0">, </span><span class="s1">y_coords)</span>
+        <span class="s1">action.perform()</span>
+
+    <span class="s0">def </span><span class="s1">action_drag_and_drop_to_element(self</span><span class="s0">, </span><span class="s1">what</span><span class="s0">, </span><span class="s1">where):</span>
+        <span class="s1">action = ActionChains(self.driver)</span>
+        <span class="s1">action.drag_and_drop(what</span><span class="s0">, </span><span class="s1">where)</span>
+        <span class="s1">action.perform()</span>
+
+    <span class="s0">def </span><span class="s1">action_move_to_element(self</span><span class="s0">, </span><span class="s1">element):</span>
+        <span class="s1">action = ActionChains(self.driver)</span>
+        <span class="s1">action.move_to_element(element)</span>
+        <span class="s1">action.perform()</span>
+
+    <span class="s0">def </span><span class="s1">remove_footer(self):</span>
+        <span class="s1">self.driver.execute_script(</span><span class="s3">&quot;document.getElementsByTagName('footer')[0].remove();&quot;</span><span class="s1">)</span>
+        <span class="s1">self.driver.execute_script(</span><span class="s3">&quot;document.getElementsById('close-fixedban').remove();&quot;</span><span class="s1">)</span>
+
+    <span class="s0">def </span><span class="s1">remove_footer1(self):</span>
+        <span class="s1">self.driver.execute_script(</span><span class="s3">&quot;document.body.style.zoom = '1'&quot;</span><span class="s1">)</span></pre>
+</body>
+</html>

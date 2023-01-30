@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>form_test.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+form_test.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">pages.form_page </span><span class="s0">import </span><span class="s1">FormPage</span>
+
+<span class="s0">class </span><span class="s1">TestForm:</span>
+
+    <span class="s0">class </span><span class="s1">TestFormPage:</span>
+
+        <span class="s0">def </span><span class="s1">test_form(self</span><span class="s0">, </span><span class="s1">driver):</span>
+            <span class="s1">form_page = FormPage(driver</span><span class="s0">, </span><span class="s2">'https://demoqa.com/automation-practice-form'</span><span class="s1">)</span>
+            <span class="s1">form_page.open()</span>
+            <span class="s1">p = form_page.fill_form_fields()</span>
+            <span class="s1">result = form_page.form_result()</span>
+            <span class="s0">assert </span><span class="s1">[p.firstname + </span><span class="s2">' ' </span><span class="s1">+ p.lastname</span><span class="s0">, </span><span class="s1">p.email] == [result[</span><span class="s3">0</span><span class="s1">]</span><span class="s0">, </span><span class="s1">result[</span><span class="s3">1</span><span class="s1">]]</span><span class="s0">, </span><span class="s2">'the form has not been filled'</span></pre>
+</body>
+</html>

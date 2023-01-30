@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>alerts_frame_windows_locators.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+alerts_frame_windows_locators.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">selenium.webdriver.common.by </span><span class="s0">import </span><span class="s1">By</span>
+
+<span class="s0">class </span><span class="s1">BrowserWindowsPageLocators:</span>
+    <span class="s1">NEW_TAB_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;tabButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">NEW_WINDOW_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;windowButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TITLE_NEW = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'h1[id=&quot;sampleHeading&quot;]'</span><span class="s1">)</span>
+
+<span class="s0">class </span><span class="s1">AlertsPageLocators:</span>
+    <span class="s1">SEE_ALERT_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;alertButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">APPEAR_ALERT_AFTER_5_SEC_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;timerAlertButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CONFIRM_BOX_ALERT_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;confirmButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CONFIRM_RESULT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'span[id=&quot;confirmResult&quot;]'</span><span class="s1">)</span>
+    <span class="s1">PROMPT_BOX_ALERT_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;promtButton&quot;]'</span><span class="s1">)</span>
+    <span class="s1">PROMPT_RESULT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'span[id=&quot;promptResult&quot;]'</span><span class="s1">)</span>
+<span class="s3">#</span>
+<span class="s0">class </span><span class="s1">FramesPageLocators:</span>
+    <span class="s1">FIRST_FRAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'iframe[id=&quot;frame1&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SECOND_FRAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'iframe[id=&quot;frame2&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TITLE_FRAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'h1[id=&quot;sampleHeading&quot;]'</span><span class="s1">)</span>
+<span class="s3">#</span>
+<span class="s3">#</span>
+<span class="s0">class </span><span class="s1">NestedFramesPageLocators:</span>
+    <span class="s1">PARENT_FRAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'iframe[id=&quot;frame1&quot;]'</span><span class="s1">)</span>
+    <span class="s1">PARENT_TEXT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'body'</span><span class="s1">)</span>
+    <span class="s1">CHILD_FRAME = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'iframe[srcdoc=&quot;&lt;p&gt;Child Iframe&lt;/p&gt;&quot;]'</span><span class="s1">)</span>
+    <span class="s1">CHILD_TEXT = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'p'</span><span class="s1">)</span>
+<span class="s3">#</span>
+<span class="s3">#</span>
+<span class="s0">class </span><span class="s1">ModalDialogsPageLocators:</span>
+    <span class="s1">SMALL_MODAL_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;showSmallModal&quot;]'</span><span class="s1">)</span>
+    <span class="s1">SMALL_MODAL_CLOSE_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;closeSmallModal&quot;]'</span><span class="s1">)</span>
+    <span class="s1">BODY_SMALL_MODAL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;modal-body&quot;]'</span><span class="s1">)</span>
+    <span class="s1">TITLE_SMALL_MODAL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;example-modal-sizes-title-sm&quot;]'</span><span class="s1">)</span>
+
+    <span class="s1">LARGE_MODAL_BUTTON = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'button[id=&quot;showLargeModal&quot;]'</span><span class="s1">)</span>
+    <span class="s1">BODY_LARGE_MODAL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[class=&quot;modal-body&quot;] p'</span><span class="s1">)</span>
+    <span class="s1">TITLE_LARGE_MODAL = (By.CSS_SELECTOR</span><span class="s0">, </span><span class="s2">'div[id=&quot;example-modal-sizes-title-lg&quot;]'</span><span class="s1">) </span></pre>
+</body>
+</html>
